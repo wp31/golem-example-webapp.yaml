@@ -1,0 +1,8 @@
+image:
+  url: "https://hub.docker.com/r/golemfactory/python"
+  tag: "3.9.9"
+
+entrypoint: "python3 golem_dapp_runner.py"
+
+env:
+  - "YAGNA_APPKEY=${app_key}"
