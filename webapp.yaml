@@ -1,8 +1,29 @@
-image:
-  url: "https://hub.docker.com/r/golemfactory/python"
-  tag: "3.9.9"
+meta:
+  name: "My Python App"
+  description: "My Python app hosted on Golem Network"
+  author: "Your Name"
+  version: "0.1.0"
+  homepage: "https://github.com/wp31/golem-example-webapp.yaml"
 
-entrypoint: "python3 golem_dapp_runner.py"
+payloads:
+  app:
+    runtime: "vm"
+    params:
+      image_hash: "insert-image-hash-here"
 
-env:
-  - "YAGNA_APPKEY=${app_key}"
+nodes:
+  app:
+    payload: "app"
+    init:
+      - run:
+          args:
+            - "/bin/bash"
+            - "-c"
+            - "pip install -r requirements.txt && python app.py"
+    network: "default"
+    ip:
+      - "192.168.0.2"
+
+networks:
+  default:
+    ip: "192.168.0.0/24"
